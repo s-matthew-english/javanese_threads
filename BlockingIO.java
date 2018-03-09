@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -12,7 +13,12 @@ public class BlockingIO {
     private static final ExecutorService THREADS = Executors.newCachedThreadPool();
 
     public static void main(String[] args) throws Exception {
-        try (final ServerSocket server = new ServerSocket(1888)) {
+
+        /* 
+         * Read with following command: "nc 127.0.0.1 1888"
+         */
+        InetAddress address = InetAddress.getByName("127.0.0.1");
+        try (final ServerSocket server = new ServerSocket(1888, 1, address)) {
             while (true) {
                 final Socket client = server.accept();
                 THREADS.submit(new Runnable() {
