@@ -1,7 +1,14 @@
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URLConnection;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -14,7 +21,7 @@ public class BlockingIO {
 
     public static void main(String[] args) throws Exception {
 
-        /* 
+        /*
          * Read with following command: "nc 127.0.0.1 1888"
          */
         InetAddress address = InetAddress.getByName("127.0.0.1");
@@ -25,7 +32,14 @@ public class BlockingIO {
                     @Override
                     public void run() {
                         try {
-                            client.getOutputStream().write("foo".getBytes());
+                            DataOutputStream dos = new DataOutputStream(client.getOutputStream());
+                            byte[] byteArray = new byte[500000];
+                            dos.write(byteArray);
+
+                            // Determine size of output message.
+                            PrintStream ps = new PrintStream(client.getOutputStream());
+                            ps.println("\n" + "output message size: " + dos.size());
+
                             client.close();
                         } catch (final IOException ex) {
                             throw new IllegalArgumentException(ex);
