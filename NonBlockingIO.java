@@ -1,10 +1,15 @@
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * TODO: Make this write a 500kb message to each client in the same way the BlockingIO does it.
@@ -14,8 +19,14 @@ import java.util.Set;
 public class NonBlockingIO {
 
     public static void main(String[] args) throws Exception {
+        run();
+    }
+
+    public static void run() throws Exception {
+
         try (final ServerSocketChannel server = ServerSocketChannel.open()) {
-            server.bind(new InetSocketAddress(1888));
+            InetAddress address = InetAddress.getByName("127.0.0.1");
+            server.bind(new InetSocketAddress(address,1888));
             server.configureBlocking(false);
             final Selector selector = Selector.open();
             server.register(selector, SelectionKey.OP_ACCEPT);
@@ -27,11 +38,11 @@ public class NonBlockingIO {
                         final SelectionKey key = iterator.next();
                         iterator.remove();
                         final SocketChannel client = ((ServerSocketChannel)key.channel()).accept();
+                        client.write(ByteBuffer.wrap("bar".getBytes()));
+                        client.close();
                     }
                 }
             }
-            //client.write(ByteBuffer.wrap("foo".getBytes()));
-            //client.close();
         }
     }
 }

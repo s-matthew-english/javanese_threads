@@ -9,6 +9,8 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URLConnection;
+import java.net.UnknownHostException;
+import java.security.SecureRandom;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -20,7 +22,9 @@ public class BlockingIO {
     private static final ExecutorService THREADS = Executors.newCachedThreadPool();
 
     public static void main(String[] args) throws Exception {
-
+        run();
+    }
+    public static void run() throws Exception {
         /*
          * Read with following command: "nc 127.0.0.1 1888"
          */
@@ -32,14 +36,10 @@ public class BlockingIO {
                     @Override
                     public void run() {
                         try {
-                            DataOutputStream dos = new DataOutputStream(client.getOutputStream());
-                            byte[] byteArray = new byte[500000];
-                            dos.write(byteArray);
-
-                            // Determine size of output message.
-                            PrintStream ps = new PrintStream(client.getOutputStream());
-                            ps.println("\n" + "output message size: " + dos.size());
-
+                            byte[] byteArray = "foo".getBytes();
+                            //byte[] byteArray = new byte[500000];
+                            //new SecureRandom().nextBytes(byteArray);
+                            client.getOutputStream().write(byteArray);
                             client.close();
                         } catch (final IOException ex) {
                             throw new IllegalArgumentException(ex);
