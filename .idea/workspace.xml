@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d70ef62-2290-4f18-994d-3dd7a2710873" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestNonBlockingIO.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BlockingIO$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BlockingIO.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/BlockingIO$1.class" afterPath="$PROJECT_DIR$/out/production/threads/BlockingIO$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/BlockingIO.class" afterPath="$PROJECT_DIR$/out/production/threads/BlockingIO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/NonBlockingIO.class" afterPath="$PROJECT_DIR$/out/production/threads/NonBlockingIO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/threads.iml" afterPath="$PROJECT_DIR$/.idea/threads.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/TestNonBlockingIO$1.class" afterPath="$PROJECT_DIR$/out/production/threads/TestNonBlockingIO$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/TestNonBlockingIO.class" afterPath="$PROJECT_DIR$/out/production/threads/TestNonBlockingIO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BlockingIO.java" afterPath="$PROJECT_DIR$/BlockingIO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NonBlockingIO.java" afterPath="$PROJECT_DIR$/NonBlockingIO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/.idea/misc.xml" afterPath="$PROJECT_DIR$/out/production/threads/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/.idea/threads.iml" afterPath="$PROJECT_DIR$/out/production/threads/.idea/threads.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/threads/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/threads/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestNonBlockingIO.java" afterPath="$PROJECT_DIR$/TestNonBlockingIO.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,7 +29,7 @@
       <file leaf-file-name="NonBlockingIO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NonBlockingIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
+            <state relative-caret-position="299">
               <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
               <folding />
             </state>
@@ -49,10 +39,11 @@
       <file leaf-file-name="TestNonBlockingIO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestNonBlockingIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="881">
-              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="460">
+              <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1424#1432#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -205,7 +196,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestNonBlockingIO">
+  <component name="RunManager" selected="JUnit.TestNonBlockingIO.testConcurrentIO">
     <configuration name="BlockingIO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="BlockingIO" />
@@ -243,6 +234,26 @@
       <option name="MAIN_CLASS_NAME" value="TestNonBlockingIO" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TestNonBlockingIO.testConcurrentIO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="threads" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestNonBlockingIO" />
+      <option name="METHOD_NAME" value="testConcurrentIO" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -354,18 +365,20 @@
       <properties />
       <listeners />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.BlockingIO" />
       <item index="1" class="java.lang.String" itemvalue="Application.NonBlockingIO" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.TestNonBlockingIO.testNonBlockingIO" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.TestNonBlockingIO" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestNonBlockingIO.testConcurrentIO" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TestNonBlockingIO" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestNonBlockingIO.testConcurrentIO" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.TestNonBlockingIO.testNonBlockingIO" />
-        <item index="2" class="java.lang.String" itemvalue="Application.NonBlockingIO" />
-        <item index="3" class="java.lang.String" itemvalue="Application.BlockingIO" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestNonBlockingIO" />
+        <item index="3" class="java.lang.String" itemvalue="Application.NonBlockingIO" />
+        <item index="4" class="java.lang.String" itemvalue="Application.BlockingIO" />
       </list>
     </recent_temporary>
   </component>
@@ -392,25 +405,25 @@
     <history-entry file="TestNonBlockingIO - 2018.03.11 at 01h 33m 36s.xml">
       <configuration name="TestNonBlockingIO" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 17m 54s.xml">
+    <history-entry file="TestNonBlockingIO_testConcurrentIO - 2018.03.11 at 01h 54m 09s.xml">
+      <configuration name="TestNonBlockingIO.testConcurrentIO" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNonBlockingIO_testConcurrentIO - 2018.03.11 at 01h 54m 33s.xml">
+      <configuration name="TestNonBlockingIO.testConcurrentIO" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNonBlockingIO_testConcurrentIO - 2018.03.11 at 01h 58m 00s.xml">
+      <configuration name="TestNonBlockingIO.testConcurrentIO" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNonBlockingIO_testConcurrentIO - 2018.03.11 at 01h 58m 58s.xml">
+      <configuration name="TestNonBlockingIO.testConcurrentIO" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNonBlockingIO_testConcurrentIO - 2018.03.11 at 01h 59m 31s.xml">
+      <configuration name="TestNonBlockingIO.testConcurrentIO" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 47m 44s.xml">
       <configuration name="TestNonBlockingIO.testNonBlockingIO" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 18m 08s.xml">
-      <configuration name="TestNonBlockingIO.testNonBlockingIO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 30m 55s.xml">
-      <configuration name="TestNonBlockingIO.testNonBlockingIO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 30m 59s.xml">
-      <configuration name="TestNonBlockingIO.testNonBlockingIO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 31m 17s.xml">
-      <configuration name="TestNonBlockingIO.testNonBlockingIO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 31m 21s.xml">
-      <configuration name="TestNonBlockingIO.testNonBlockingIO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 31m 25s.xml">
+    <history-entry file="TestNonBlockingIO_testNonBlockingIO - 2018.03.11 at 01h 48m 21s.xml">
       <configuration name="TestNonBlockingIO.testNonBlockingIO" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -429,7 +442,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2646421" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08026031" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27874187" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -591,7 +604,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NonBlockingIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
+        <state relative-caret-position="299">
           <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
           <folding />
         </state>
@@ -599,10 +612,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestNonBlockingIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="881">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="460">
+          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1424#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>
