@@ -51,17 +51,12 @@ public class TestNonBlockingIO {
 
   @Test
   public void testConcurrentIO() throws Exception {
-    // We will store the threads so that we can check if they are done
     List<Thread> threads = new ArrayList<Thread>();
-    // We will create 500 threads
     for (int i = 0; i < 100; i++) {
       Runnable task = new MyRunnable();
       Thread worker = new Thread(task);
-      // We can set the name of the thread
       worker.setName(String.valueOf(i));
-      // Start the thread, never call method run() direct
       worker.start();
-      // Remember the thread for later usage
       threads.add(worker);
     }
     int running = 0;
