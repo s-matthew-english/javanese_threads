@@ -10,6 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,8 +28,8 @@ public class TestNonBlockingIO {
         }
       }
     });
-
     t.start();
+    Thread.sleep(1000);
   }
 
 //  @Test
@@ -51,9 +52,10 @@ public class TestNonBlockingIO {
 
   @Test
   public void testConcurrentIO() throws Exception {
+    CountDownLatch countDownLatch = new CountDownLatch(1);
     List<Thread> threads = new ArrayList<Thread>();
-    for (int i = 0; i < 100; i++) {
-      Runnable task = new MyRunnable();
+    for (int i = 0; i < 30; i++) {
+      Runnable task = new MyRunnable(countDownLatch);
       Thread worker = new Thread(task);
       worker.setName(String.valueOf(i));
       worker.start();
@@ -67,6 +69,7 @@ public class TestNonBlockingIO {
           running++;
         }
       }
+      countDownLatch.countDown();
       System.out.println("We have " + running + " running threads. ");
     } while (running > 0);
 
@@ -74,11 +77,17 @@ public class TestNonBlockingIO {
 }
 
 class MyRunnable implements Runnable {
+  CountDownLatch countDownLatch;
+
+  MyRunnable(CountDownLatch countDownLatch) {
+    this.countDownLatch = countDownLatch;
+  }
 
   @Override
   public void run() {
     try {
       Socket socket = new Socket("127.0.0.1",1888);
+      countDownLatch.await();
       InputStream is = socket.getInputStream();
       ByteArrayOutputStream buffer = new ByteArrayOutputStream();
       int nRead;
@@ -89,9 +98,9 @@ class MyRunnable implements Runnable {
       buffer.flush();
 
       String output = new String(buffer.toByteArray());
-      System.out.println(output);
+      //System.out.println(output);
       socket.close();
-    } catch (IOException e) {
+    } catch (IOException | InterruptedException e) {
       e.printStackTrace();
     }
   }

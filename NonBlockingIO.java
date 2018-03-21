@@ -6,6 +6,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
@@ -37,9 +38,36 @@ public class NonBlockingIO {
                     while (iterator.hasNext()) {
                         final SelectionKey key = iterator.next();
                         iterator.remove();
-                        final SocketChannel client = ((ServerSocketChannel)key.channel()).accept();
-                        client.write(ByteBuffer.wrap("bar".getBytes()));
-                        client.close();
+                        if(key.isAcceptable()) {
+                            final SocketChannel client = ((ServerSocketChannel)key.channel()).accept();
+
+                            byte[] byteArray = new byte[500000];
+                            new SecureRandom().nextBytes(byteArray);
+
+                            ByteBuffer byteBuffer = ByteBuffer.wrap(byteArray);
+
+                            // Returns int
+                            client.write(byteBuffer);
+                            // call to .remaining returns same information
+                            if(byteBuffer.remaining() > 0) {
+                                SelectionKey clientKey = client.register(selector, SelectionKey.OP_WRITE);
+                                clientKey.attach(byteBuffer);
+                            }
+                        } else if(key.isWritable()){
+                            // Get original ByteBuffer back.
+                            ByteBuffer byteBuffer = (ByteBuffer)key.attachment();
+
+                            // Returns int
+                            SocketChannel client = (SocketChannel)key.channel();
+                            client.write(byteBuffer);
+
+                            // call to .remaining returns same information
+                            if(byteBuffer.remaining() == 0) {
+                                key.cancel();
+                                client.close();
+                            }
+                        }
+                        //
                     }
                 }
             }
