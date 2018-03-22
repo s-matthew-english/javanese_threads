@@ -25,8 +25,22 @@ public class NonBlockingIO {
 
     public static void run() throws Exception {
 
+        /* ServerSocketChannel: A selectable channel for stream-oriented listening sockets.
+         *
+         * A server-socket channel is created by invoking the `open` method of this class. It is not possible
+         * to create a channel for arbitrary, pre-existing ServerSocket. A newly-created server-socket channel
+         * is open but not yet bound. An attempt to invoke the `accept` method of an unbound server-socket channel
+         * will cause a NotYetBoundException to be thrown. A server-socket channel can be bound by invoking one of the
+         * `bind` methods defined by this class.
+         */
         try (final ServerSocketChannel server = ServerSocketChannel.open()) {
-            InetAddress address = InetAddress.getByName("127.0.0.1");
+            /* InetAddress: This class represents an Internet Protocol (IP) address.
+             *
+             * An IP address is either a 32-bit or 128-bit unsigned number used by IP, a lower-level protocol on which protocols like UDP and TCP are built.
+             * The IP address architecture is defined by RFC 790: `Assigned Numbers`. An instance of an InetAddress consists of an IP address and possibly
+             * its corresponding host name (depending on whether it is constructed with a host name or whether it has already done reverse host name resolution).
+             */
+            InetAddress address = InetAddress.getByName("127.0.0.1"); // getByName(String host), Determines the IP address of a host, given the host's name.
             server.bind(new InetSocketAddress(address,1888));
             server.configureBlocking(false);
             final Selector selector = Selector.open();
